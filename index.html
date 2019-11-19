@@ -2,69 +2,82 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+
   <title>Where To Watch</title>
-  
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body class="black">
-    <nav>
-        <div class="nav-content grey darken-2 center">
-            <h2 class="nav-title">Where To Watch</h2>
-        </div>
-    </nav>
-    <div class="parallax-container">
-        <div class="parallax"><img src="moviereel.jpg"></div>
+  <nav>
+    <div class="nav-content grey darken-2 center">
+      <h2 class="nav-title">Where To Watch</h2>
     </div>
+  </nav>
+  <div class="parallax-container">
+    <div class="parallax"><img src="moviereel.jpg"></div>
+  </div>
 
   <div class="container" id="landing">
-    <blockquote class="white-text"> An application to get facts about any movie, watch its trailer, and display information about where it available on streaming services. </blockquote>
+    <blockquote class="white-text"> An application to get facts about any movie, watch its trailer, and display
+      information about where it available on streaming services. </blockquote>
   </div>
 
   <div class="container" id="results">
-        
-        <div class="container">
-          <div class="omdbContainer">
-            <div class="row">
-              <div class="col s12 m4">
-                <img id="moviePoster" class="responsive-img" src="510L5ypQBdL._SY550_.jpg">
-              </div>
-              <div class="col s12 m8">
-                <blockquote class="white-text" id="movieTitle">Title</blockquote>
+
+    <div class="container">
+      <div class="omdbContainer">
+        <div class="row">
+          <div class="col s12 m4">
+            <img id="moviePoster" class="responsive-img" src="510L5ypQBdL._SY550_.jpg">
+          </div>
+          <div class="col s12 m8">
+              <blockquote>
+                <h2 class="white-text" id="movieTitle">Title</h2>
                 <p class="white-text" id="movieYear">Released: Year</p>
                 <p class="white-text" id="movieDirector">Directed By: Director</p>
                 <p class="white-text" id="moviePlot">Plot: Here is the plot summary</p>
-              </div>
-            </div>
+              </blockquote>
           </div>
         </div>
-    
-        <div class="container">
-          <div>
-            <div class="row">
-              <div id="youTubeContainer" class="col s12">
-                Youtube Video
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="container">
-          <div class="titleContainer">
-            <div class="row">
-              <div class="col s12">
-                Where to watch:
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+    </div>
 
-        <!-- <div class="container">
+    <div class="container">
+      <div class="row">
+        <div id="youTubeContainer" class="col s12"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="uTellyContainer">
+        <div class="row">
+          <div class="col s12">
+              <h5 class="white-text">Where To Watch:</h5>
+              <table class="highlight responsive-table">
+                  <thead>
+                    <tr>
+                        <th class="white-text">Service</th>
+                        <th class="white-text">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="white-text">Hulu</td>
+                      <td class="white-text"><a href="www.hereisyourlink.com">Here is your link</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container">
           <div class="recommendContainer">
             <div class="row">
               <div class="col s12">
@@ -78,20 +91,20 @@
   <footer class="footer-fixed black">
     <div class="container">
       <div class="row">
-          <form class="col s12 center-align">
-            <div class="row">
-              <div class="col s6 offset-s3">
-                <div class="input-field">
-                  <span class="material-icons prefix">local_movies</span>
-                  <textarea id="search" class="white-text materialize-textarea"></textarea>
-                  <label for="search">Find A Movie</label>
-                  <button class="btn waves-effect waves-light" id="searchBtn" type="search" name="action">Search
-                      <i class="material-icons right">send</i>
-                  </button>
-                </div>
+        <form class="col s12 center-align">
+          <div class="row">
+            <div class="col s6 offset-s3">
+              <div class="input-field">
+                <span class="material-icons prefix">local_movies</span>
+                <textarea id="search" class="white-text materialize-textarea"></textarea>
+                <label for="search">Find A Movie</label>
+                <button class="btn waves-effect waves-light" id="searchBtn" type="search" name="action">Search
+                  <i class="material-icons right">send</i>
+                </button>
               </div>
             </div>
-          </form>
+          </div>
+        </form>
       </div>
     </div>
   </footer>
