@@ -15,6 +15,6 @@ main {
 	font-size: inherit;
 }
 
-#bordertest{
-  border: solid red 5px;
+.parallax-container {
+  height: 400px;
 }
