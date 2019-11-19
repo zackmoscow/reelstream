@@ -12,7 +12,7 @@
   <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 
-<body class="grey lighten-1">
+<body class="black">
     <nav>
         <div class="nav-content grey darken-2 center">
             <h2 class="nav-title">Where To Watch</h2>
@@ -22,17 +22,40 @@
         <div class="parallax"><img src="moviereel.jpg"></div>
     </div>
 
-  <div class="container white" id="results">
+  <div class="container" id="landing">
+    <blockquote class="white-text"> An application to get facts about any movie, watch its trailer, and display information about where it available on streaming services. </blockquote>
+  </div>
 
-    <div class="row" id="movieInfo">Movie Info Here via OMDb
-    </div>
-
-    <div class="row" id="trailer">Movie Trailer Here via YouTube
-    </div>
-
-    <div class="row" id="whereToWatch">Where to Watch Info Here via Utelly
-    </div>
-
+  <div class="container" id="results">
+        
+        <div class="container">
+          <div class="youTubeContainer">
+            <div class="row">
+              <div class="col s12">
+                Youtube Video
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container">
+          <div class="titleContainer">
+            <div class="row">
+              <div class="col s12">
+                Where to watch:
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="container">
+          <div class="recommendContainer">
+            <div class="row">
+              <div class="col s12">
+                Recommendatations
+              </div>
+            </div>
+          </div>
+        </div> -->
   </div>
 
   <footer class="footer-fixed black">
@@ -40,10 +63,15 @@
       <div class="row">
           <form class="col s12 center-align">
             <div class="row">
-              <div class="input-field col s6" style="margin-right: auto; margin-left: auto;">
+              <div class="col s6 offset-s3">
+                <div class="input-field">
                   <span class="material-icons prefix">local_movies</span>
-                <textarea id="search" class="white-text materialize-textarea"></textarea>
-                <label for="search">Find A Movie</label>
+                  <textarea id="search" class="white-text materialize-textarea"></textarea>
+                  <label for="search">Find A Movie</label>
+                  <button class="btn waves-effect waves-light" id="searchBtn" type="search" name="action">Search
+                      <i class="material-icons right">send</i>
+                  </button>
+                </div>
               </div>
             </div>
           </form>
