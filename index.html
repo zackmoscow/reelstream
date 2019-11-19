@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
-    </body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  
+  <title>Where To Watch</title>
+  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body class="grey lighten-1">
+    <nav>
+        <div class="nav-content grey darken-2 center">
+            <h2 class="nav-title">Where To Watch</h2>
+        </div>
+    </nav>
+    <div class="parallax-container">
+        <div class="parallax"><img src="moviereel.jpg"></div>
+    </div>
+
+  <div class="container white" id="results">
+
+    <div class="row" id="movieInfo">Movie Info Here via OMDb
+    </div>
+
+    <div class="row" id="trailer">Movie Trailer Here via YouTube
+    </div>
+
+    <div class="row" id="whereToWatch">Where to Watch Info Here via Utelly
+    </div>
+
+  </div>
+
+  <footer class="footer-fixed black">
+    <div class="container">
+      <div class="row">
+          <form class="col s12 center-align">
+            <div class="row">
+              <div class="input-field col s6" style="margin-right: auto; margin-left: auto;">
+                  <span class="material-icons prefix">local_movies</span>
+                <textarea id="search" class="white-text materialize-textarea"></textarea>
+                <label for="search">Find A Movie</label>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>

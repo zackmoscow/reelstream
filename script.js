@@ -1,4 +1,6 @@
+
 $(function() {
+    $('.parallax').parallax();
     var movies = [];
     var movieApiKey = "cff6c897";
     var youTubeApiKey = "AIzaSyBcMUj0c7zvG1jkdogJmJgb94HkcMk_U-U";
@@ -40,4 +42,6 @@ $(function() {
     
     omdbAjaxRequest();
 
-})
+    })
+
+});
