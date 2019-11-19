@@ -18,3 +18,9 @@ main {
 .parallax-container {
   height: 400px;
 }
+
+.footer-fixed {
+	position: fixed;
+	bottom: 0;
+  width: 100%;
+}
