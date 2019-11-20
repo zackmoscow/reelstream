@@ -22,16 +22,23 @@ $(function() {
     searchBtn.click(function(e) {
         searchValue = $("#search").val().trim();
         title = searchValue;
-        console.log(searchValue);
+        //console.log(searchValue);
         e.preventDefault();
         $('#landing').hide();
         omdbAjaxRequest();
         $('#results').show();
     });
-
+    $(document).on("click", '.carousel-item', function(event){
+        event.preventDefault();
+        searchValue = event.target.getAttribute('data-name');
+        title = searchValue;
+        console.log(searchValue);
+        $('#landing').hide();
+        omdbAjaxRequest();
+        $('#results').show();
+    })
     // hide the results box
     $('#results').hide;
-    console.log('im working')
         // youtube ajax request. returns an array of 25 results. we're searching by title and year
     function youTubeAjaxRequest() {
         $.ajax({
@@ -57,14 +64,11 @@ $(function() {
             }
         }
         $.ajax(settings).done(function(response) {
-            console.log(response);
             var locations = response.results[0].locations;
             $('#utellyResult').empty();
             locations.forEach(function(item) {
                 movieSource = item.name;
                 movieSourceUrl = item.url;
-                console.log(movieSource);
-                console.log(movieSourceUrl);
                 var span = $(`<span><a href="${movieSourceUrl}">${movieSource}</a></span>`);
                 $('#utellyResult').text("Where To Watch:  ")
                 $('#utellyResult').append(span);
@@ -77,11 +81,14 @@ $(function() {
             url: `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=34c4275ec69762284d8e87bcc5f7e573&language=en-US&page=1`,
             method: "GET"
         }).then(function(response) {
+            $('.carousel').empty();
             for (var i = 0; i < 9; i++) {
                 var tmdbPoster = response.results[i].poster_path;
                 var recMovieName = response.results[i].original_title;
-                var recMovieImg = $(`<img data-name="${recMovieName}' src="https://image.tmdb.org/t/p/w500${tmdbPoster}"`);
+                var recMovieImg = $(`<a href="#" class="carousel-item"> <img data-name="${recMovieName}" src="https://image.tmdb.org/t/p/w500${tmdbPoster}"></a>`);
+                $('#recommendations').append(recMovieImg);
             }
+            $('.carousel').carousel();
         });
     };
     // array of reccomendations
@@ -93,7 +100,6 @@ $(function() {
             url: queryURL,
             method: "GET"
         }).then(function(response) {
-            console.log(response)
             movieTitle = response.Title;
             moviePoster = response.Poster;
             movieYear = response.Year;
@@ -101,7 +107,6 @@ $(function() {
             movieDirector = response.Director;
             moviePlot = response.Plot;
             movieID = response.imdbID;
-            console.log(movieID);
             $('#moviePoster').attr('src', moviePoster);
             $('#movieTitle').text(movieTitle);
             $('#movieYear').text("Released: " + movieYear);
