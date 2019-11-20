@@ -1,9 +1,10 @@
 $(function() {
     $('.parallax').parallax();
     var movies = [];
+    var searchValue;
     var movieApiKey = "cff6c897";
     var youTubeApiKey = "AIzaSyBcMUj0c7zvG1jkdogJmJgb94HkcMk_U-U";
-    var title = searchValue;
+    var title;
     var movieTitle;
     var moviePoster;
     var movieYear;
@@ -13,6 +14,23 @@ $(function() {
     // the name and url of streaming services from the utelly ajax request
     var movieSource;
     var movieSourceUrl;
+    var searchBtn = $('#searchBtn');
+
+    $('#results').hide();
+  
+    searchBtn.click(function(e){
+        searchValue = $("#search").val().trim();
+        title = searchValue;
+        console.log(searchValue);
+        e.preventDefault();
+        $('#landing').hide();
+        omdbAjaxRequest();
+        $('#results').show();
+    });
+
+    // hide the results box
+    $('#results').hide;
+    console.log('im working')
 // youtube ajax request. returns an array of 25 results. we're searching by title and year
     function youTubeAjaxRequest(){
         $.ajax({
@@ -20,8 +38,9 @@ $(function() {
             method: "GET"
         }).then(function(response) {
             videoID = response.items[0].id.videoId;
-            var iframe = $(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
-            console.log(videoID);
+            var iframe = $(`<div class="video-responsive"><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`);
+            $('#youTubeContainer').empty();
+            $("#youTubeContainer").append(iframe);
         })
     }
 // utelly ajax request
@@ -44,6 +63,11 @@ $(function() {
                 movieSourceUrl = item.url;
                 console.log(movieSource);
                 console.log(movieSourceUrl);
+                var tr = $('<tr>');
+                var td = $(`<td><a href="${movieSourceUrl}">${movieSource}</a></td>`);
+                tr.append(td);
+                $('tbody').empty();
+                $('tbody').append(tr);
             })
         })
     };
@@ -60,15 +84,14 @@ $(function() {
             movieYear = response.Year;
             movieRating = response.Ratings[0];
             movieDirector = response.Director;
-            console.log(movieTitle);
+            moviePlot = response.Plot;
+            $('#moviePoster').attr('src', moviePoster);
+            $('#movieTitle').text(movieTitle);
+            $('#movieYear').text(movieYear);
+            $('#movieDirector').text(movieDirector);
+            $('#moviePlot').text(moviePlot);
             youTubeAjaxRequest();
             utellyAjaxRequest();
         });
     }
-
-
-    var searchValue = $("#search").val().trim();
-    var searchBtn = $('#searchBtn');
-
-    searchBtn.click(function(){omdbAjaxRequest});
 });
