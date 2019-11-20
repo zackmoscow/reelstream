@@ -1,9 +1,9 @@
 $(function() {
-    // $('.parallax').parallax();
+    $('.parallax').parallax();
     var movies = [];
     var movieApiKey = "cff6c897";
     var youTubeApiKey = "AIzaSyBcMUj0c7zvG1jkdogJmJgb94HkcMk_U-U";
-    var title = 'The Dark Knight';
+    var title = searchValue;
     var movieTitle;
     var moviePoster;
     var movieYear;
@@ -65,7 +65,10 @@ $(function() {
             utellyAjaxRequest();
         });
     }
-    
-    omdbAjaxRequest();
 
+
+    var searchValue = $("#search").val().trim();
+    var searchBtn = $('#searchBtn');
+
+    searchBtn.click(function(){omdbAjaxRequest});
 });
