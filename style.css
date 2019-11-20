@@ -1,3 +1,12 @@
+@font-face {
+  font-family: headerFont;
+  src: url(EastMarketTwoNF.ttf);
+}
+
+h1{
+  font-family: headerFont;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -17,4 +26,11 @@ main {
 
 .parallax-container {
   height: 400px;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
