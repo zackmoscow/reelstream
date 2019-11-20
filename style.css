@@ -1,12 +1,3 @@
-@font-face {
-  font-family: headerFont;
-  src: url(EastMarketTwoNF.ttf);
-}
-
-h1{
-  font-family: headerFont;
-}
-
 body {
   display: flex;
   min-height: 100vh;
@@ -33,4 +24,18 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+#headerText {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+  opacity: .75;
+
+
+}
+
+blockquote {
+  overflow-y: scroll;
 }
