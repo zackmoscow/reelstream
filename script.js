@@ -6,6 +6,7 @@ $(function() {
     var youTubeApiKey = "AIzaSyBcMUj0c7zvG1jkdogJmJgb94HkcMk_U-U";
     var title;
     var movieTitle;
+    var movieID;
     var moviePoster;
     var movieYear;
     var movieRating;
@@ -17,8 +18,8 @@ $(function() {
     var searchBtn = $('#searchBtn');
 
     $('#results').hide();
-  
-    searchBtn.click(function(e){
+
+    searchBtn.click(function(e) {
         searchValue = $("#search").val().trim();
         title = searchValue;
         console.log(searchValue);
@@ -31,8 +32,8 @@ $(function() {
     // hide the results box
     $('#results').hide;
     console.log('im working')
-// youtube ajax request. returns an array of 25 results. we're searching by title and year
-    function youTubeAjaxRequest(){
+        // youtube ajax request. returns an array of 25 results. we're searching by title and year
+    function youTubeAjaxRequest() {
         $.ajax({
             url: `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${movieTitle}${movieYear}trailer&key=${youTubeApiKey}`,
             method: "GET"
@@ -43,8 +44,8 @@ $(function() {
             $("#youTubeContainer").append(iframe);
         })
     }
-// utelly ajax request
-    function utellyAjaxRequest(){
+    // utelly ajax request
+    function utellyAjaxRequest() {
         var settings = {
             "async": true,
             "crossDomain": true,
@@ -71,8 +72,23 @@ $(function() {
             })
         })
     };
-// omdb ajax request by title. the .then function runs the youtube request also.
-    function omdbAjaxRequest(){
+    // // tmbd request returns an array of reccomendations
+    function tmdbRequest() {
+        $.ajax({
+            url: `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=34c4275ec69762284d8e87bcc5f7e573&language=en-US&page=1`,
+            method: "GET"
+        }).then(function(response) {
+            for (var i = 0; i < 9; i++) {
+                var tmdbPoster = response.results[i].poster_path;
+                var recMovieName = response.results[i].original_title;
+                var recMovieImg = $(`<img data-name="${recMovieName}' src="https://image.tmdb.org/t/p/w500${tmdbPoster}"`);
+            }
+        });
+    };
+    // array of reccomendations
+    var reccomendations;
+    // omdb ajax request by title. the .then function runs the youtube request also.
+    function omdbAjaxRequest() {
         var queryURL = "http://www.omdbapi.com/?apikey=" + movieApiKey + "&t=" + title;
         $.ajax({
             url: queryURL,
@@ -85,6 +101,8 @@ $(function() {
             movieRating = response.Ratings[0];
             movieDirector = response.Director;
             moviePlot = response.Plot;
+            movieID = response.imdbID;
+            console.log(movieID);
             $('#moviePoster').attr('src', moviePoster);
             $('#movieTitle').text(movieTitle);
             $('#movieYear').text(movieYear);
@@ -92,6 +110,7 @@ $(function() {
             $('#moviePlot').text(moviePlot);
             youTubeAjaxRequest();
             utellyAjaxRequest();
+            tmdbRequest();
         });
     }
 });
