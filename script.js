@@ -38,7 +38,7 @@ $(function() {
             method: "GET"
         }).then(function(response) {
             videoID = response.items[0].id.videoId;
-            var iframe = $(`<div class="video-responsive"><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`);
+            var iframe = $(`<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`);
             $('#youTubeContainer').empty();
             $("#youTubeContainer").append(iframe);
         })
@@ -58,16 +58,15 @@ $(function() {
         $.ajax(settings).done(function(response) {
             console.log(response);
             var locations = response.results[0].locations;
+            $('#utellyResult').empty();
             locations.forEach(function(item) {
                 movieSource = item.name;
                 movieSourceUrl = item.url;
                 console.log(movieSource);
                 console.log(movieSourceUrl);
-                var tr = $('<tr>');
-                var td = $(`<td><a href="${movieSourceUrl}">${movieSource}</a></td>`);
-                tr.append(td);
-                $('tbody').empty();
-                $('tbody').append(tr);
+                var span = $(`<span><a href="${movieSourceUrl}">${movieSource}</a></span>`);
+                $('#utellyResult').text("Where To Watch:  ")
+                $('#utellyResult').append(span);
             })
         })
     };
@@ -87,9 +86,9 @@ $(function() {
             moviePlot = response.Plot;
             $('#moviePoster').attr('src', moviePoster);
             $('#movieTitle').text(movieTitle);
-            $('#movieYear').text(movieYear);
-            $('#movieDirector').text(movieDirector);
-            $('#moviePlot').text(moviePlot);
+            $('#movieYear').text("Released: " + movieYear);
+            $('#movieDirector').text("Directed By: " + movieDirector);
+            $('#moviePlot').text("Plot: " + moviePlot);
             youTubeAjaxRequest();
             utellyAjaxRequest();
         });
