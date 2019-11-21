@@ -29,7 +29,7 @@ $(function() {
         $('#results').show();
     });
     $(document).on("click", '.carousel-item', function(event){
-        event.preventDefault();
+        // event.preventDefault();
         searchValue = event.target.getAttribute('data-name');
         title = searchValue;
         console.log(searchValue);
