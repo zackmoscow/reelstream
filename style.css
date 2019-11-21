@@ -27,15 +27,24 @@ main {
 }
 
 #headerText {
+  width: 100%;
+  opacity: .75;
+  border-top: dashed 5px rgb(255, 255, 255, .35);
+  border-bottom: dashed 5px rgb(255, 255, 255, .35);
+}
+
+#headerImg {
   position: relative;
   margin-top: auto;
   margin-bottom: auto;
-  width: 100%;
-  opacity: .75;
-
-
 }
 
-blockquote {
-  overflow-y: scroll;
+#headerText h1 {
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0.5rem;
 }
+
+
+
