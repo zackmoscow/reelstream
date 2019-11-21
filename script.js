@@ -95,7 +95,7 @@ $(function() {
     var reccomendations;
     // omdb ajax request by title. the .then function runs the youtube request also.
     function omdbAjaxRequest() {
-        var queryURL = "http://www.omdbapi.com/?apikey=" + movieApiKey + "&t=" + title;
+        var queryURL = "http://www.omdbapi.com/?apikey=" + movieApiKey + "&t=" + title.replace('&', '%26');
         $.ajax({
             url: queryURL,
             method: "GET"
