@@ -1,6 +1,7 @@
 body {
   display: flex;
   min-height: 100vh;
+  scroll-behavior: smooth;
   flex-direction: column;
 }
 
@@ -55,6 +56,7 @@ main {
 
 #carouselContainer {
   margin-bottom: 11rem;
+  overflow: hidden;
 }
 
 .carousel {
