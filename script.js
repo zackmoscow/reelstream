@@ -28,6 +28,17 @@ $(function() {
         omdbAjaxRequest();
         $('#results').show();
     });
+    $('#search').on("keydown",function(e) {
+        if (e.keyCode === 13) {
+            searchValue = $("#search").val().trim();
+            title = searchValue;
+            //console.log(searchValue);
+            e.preventDefault();
+            $('#landing').hide();
+            omdbAjaxRequest();
+            $('#results').show();
+        }
+    });
     $(document).on("click", '.carousel-item', function(event){
         // event.preventDefault();
         searchValue = event.target.getAttribute('data-name');
@@ -83,7 +94,7 @@ $(function() {
         }).then(function(response) {
             $('.carousel').empty();
             console.log(response);
-            for (var i = 0; i < 9; i++) {
+            for (var i = 0; i < 19; i++) {
                 var tmdbPoster = response.results[i].poster_path;
                 var recMovieName = response.results[i].title;
                 var recMovieImg = $(`<a href="#moviePoster" class="carousel-item"> <img data-name="${recMovieName}" src="https://image.tmdb.org/t/p/w500${tmdbPoster}"></a>`);
