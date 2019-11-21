@@ -82,10 +82,11 @@ $(function() {
             method: "GET"
         }).then(function(response) {
             $('.carousel').empty();
+            console.log(response);
             for (var i = 0; i < 9; i++) {
                 var tmdbPoster = response.results[i].poster_path;
-                var recMovieName = response.results[i].original_title;
-                var recMovieImg = $(`<a href="#" class="carousel-item"> <img data-name="${recMovieName}" src="https://image.tmdb.org/t/p/w500${tmdbPoster}"></a>`);
+                var recMovieName = response.results[i].title;
+                var recMovieImg = $(`<a href="#moviePoster" class="carousel-item"> <img data-name="${recMovieName}" src="https://image.tmdb.org/t/p/w500${tmdbPoster}"></a>`);
                 $('#recommendations').append(recMovieImg);
             }
             $('.carousel').carousel();
