@@ -44,3 +44,22 @@ main {
   padding: 0.5rem;
 }
 
+.footer-fixed {
+	position: fixed;
+	bottom: 0;
+  width: 100%;
+  padding: 0;
+}
+
+#carouselContainer {
+  margin-bottom: 11rem;
+}
+
+.carousel {
+  margin-top: -6rem;
+}
+
+ #search {
+   transform: translateX(-2%);
+   padding-left: 2%
+ }
