@@ -132,12 +132,10 @@ $(function () {
             $('#movieDirector').text("Directed By: " + movieDirector);
             $('#moviePlot').text("Plot: " + moviePlot);
             scrollTo('omdbContainer');
-            setTimeout(function(){
-                youTubeAjaxRequest();
-                utellyAjaxRequest();
-                tmdbRequest();
-                scrollTo('moviePoster');
-            }, 100);
+            youTubeAjaxRequest();
+            utellyAjaxRequest();
+            tmdbRequest();
+            scrollTo('moviePoster');
         });
     }
 });
