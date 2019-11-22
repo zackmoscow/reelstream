@@ -131,10 +131,13 @@ $(function () {
             $('#movieYear').text("Released: " + movieYear);
             $('#movieDirector').text("Directed By: " + movieDirector);
             $('#moviePlot').text("Plot: " + moviePlot);
-            youTubeAjaxRequest();
-            utellyAjaxRequest();
-            tmdbRequest();
-            scrollTo('moviePoster');
+            scrollTo('omdbContainer');
+            setTimeout(function(){
+                youTubeAjaxRequest();
+                utellyAjaxRequest();
+                tmdbRequest();
+                scrollTo('moviePoster');
+            }, 100);
         });
     }
 });
