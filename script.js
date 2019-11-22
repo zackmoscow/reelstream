@@ -4,6 +4,8 @@ $(function () {
     var searchValue;
     var movieApiKey = "cff6c897";
     var youTubeApiKey = "AIzaSyC5ImoUwTkX38aX8eAlbEW2_FP6fbLAVH0";
+    var tmdbApiKey = "34c4275ec69762284d8e87bcc5f7e573";
+    var utellyApiKey = "6036e8ca99msh30f244ef86faf3ep1e56f1jsn9c9368cad67e";
     var title;
     var movieTitle;
     var movieID;
@@ -19,8 +21,11 @@ $(function () {
 
     $('#results').hide();
 
+    function scrollTo(hash){
+        location.hash = "#" + hash;
+    }
+
     searchBtn.click(function (e) {
-        //document.querySelector('#youTubeContainer').scrollIntoView();
         searchValue = $("#search").val().trim();
         title = searchValue;
         //console.log(searchValue);
@@ -72,7 +77,7 @@ $(function () {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com",
-                "x-rapidapi-key": "6036e8ca99msh30f244ef86faf3ep1e56f1jsn9c9368cad67e"
+                "x-rapidapi-key": utellyApiKey
             }
         }
         $.ajax(settings).done(function (response) {
@@ -91,7 +96,7 @@ $(function () {
     // // tmbd request returns an array of reccomendations
     function tmdbRequest() {
         $.ajax({
-            url: `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=34c4275ec69762284d8e87bcc5f7e573&language=en-US&page=1`,
+            url: `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=${tmdbApiKey}&language=en-US&page=1`,
             method: "GET"
         }).then(function (response) {
             $('.carousel').empty();
@@ -129,6 +134,7 @@ $(function () {
             youTubeAjaxRequest();
             utellyAjaxRequest();
             tmdbRequest();
+            scrollTo('moviePoster');
         });
     }
 });
