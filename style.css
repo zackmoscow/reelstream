@@ -68,3 +68,10 @@ main {
    transform: translateX(-2%);
    padding-left: 2%
  }
+
+@media (max-width: 576px) {
+  .container{
+    margin: 0 0;
+    width: 100%;
+ }
+}
