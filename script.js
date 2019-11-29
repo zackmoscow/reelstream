@@ -5,7 +5,7 @@ $(function () {
     var movieApiKey = "cff6c897";
     var youTubeApiKey = "AIzaSyAFrDyxVyur8w0zK495oV0seBu7lR-JW_k";
     var tmdbApiKey = "34c4275ec69762284d8e87bcc5f7e573";
-    var utellyApiKey = "6036e8ca99msh30f244ef86faf3ep1e56f1jsn9c9368cad67e";
+    var utellyApiKey = "c0892e3092msh1db9ee8063dcf3cp123603jsnbbc582e26fd4";
     var title;
     // all of these are being set by the OMDB request
     var movieTitle;
